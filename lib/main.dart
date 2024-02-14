@@ -11,7 +11,7 @@ void main() async {
 
   final getIt = GetIt.instance;
 
-  var mapcon = await ReadJson.read('data/supabase.json');
+  var mapcon = await ReadJson.read('data/supabase.conn');
   if (mapcon == null) {
     exit(1);
   }
