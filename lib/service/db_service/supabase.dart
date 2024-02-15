@@ -41,8 +41,12 @@ class SupabaseService extends DBService {
   Future<List<BossTime>?> getBosTime() async {
     List<BossTime> data = [];
     try {
-      List<dynamic> s =
-          await _instance.client.from('timer').select('id, boss, time');
+      DateTime now = DateTime.now();
+      List<dynamic> s = await _instance.client
+          .from('timer')
+          .select('id, boss, time')
+          .filter('created_at', 'gte',
+              now.subtract(const Duration(hours: 5)).toIso8601String());
       data = s.map((el) {
         return BossTime.fromMap(el);
       }).toList();
@@ -66,7 +70,7 @@ class SupabaseConnection extends DBConnection {
   factory SupabaseConnection.fromMap(Map<String, dynamic> map) {
     return SupabaseConnection(
       url: map['url'], // Inițializați 'id' din map
-      anonkey: map['anonkey'],
+      anonkey: map['anonKey'],
     );
   }
 

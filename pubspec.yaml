@@ -38,6 +38,9 @@ dependencies:
   supabase_flutter: ^1.10.16
   get_it: ^7.6.4
   snack: ^2.0.0
+  audioplayers: ^5.2.1
+  shared_preferences: ^2.2.1
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
